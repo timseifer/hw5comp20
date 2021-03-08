@@ -4,6 +4,7 @@
 html, body {
     height: 100%;
 }
+/* used a little help here with the css https://www.w3schools.com/cssref/pr_background-position.asp */
 		html {
 			background: url("piggybank.jpg") no-repeat center center fixed; 
 			display: table;
@@ -61,7 +62,7 @@ function payout(luckyball, total_matches){
 	}else if(total_matches == 5){
 		document.write("five matches is $" + 25000 + " a year for life");
 	}else if(total_matches == 4 && luckyball){
-		document.write("fout matches and lucky ball is $" + 5000);
+		document.write("four matches and lucky ball is $" + 5000);
 	}else if(total_matches == 4){
 		document.write("four matches is $" + 200);
 	}else if(total_matches == 3 && luckyball){
