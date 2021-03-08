@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<style>
+html, body {
+    height: 100%;
+}
+		html {
+			background: url("piggybank.jpg") no-repeat center center fixed; 
+			display: table;
+			margin: auto;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+	body {
+		font-size: large;
+		text-align: center;
+		font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		color: #000;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	h2{
+		text-align: center;
+	}
+	</style>
+<body>
+
+<h2>Lottery</h2>
+
+<script lang="javascript">
+function lotto() {
+	var myArray = new Array();
+	for(let i = 0; i < 5; i++){
+		myArray.push(Math.floor(Math.random() * 48) + 1  );
+	}
+	myArray.push(Math.floor(Math.random() * 18) + 1  );
+	return myArray;
+}
+function userLotto(){
+	var myArray = new Array();
+	var num;
+	for(let i = 0; i < 5; i++){
+		num = prompt("Enter a number");
+		console.log(num);
+		myArray.push(num);
+	}
+	myArray.push(prompt("Enter your lucky number"));
+	return myArray;
+}
+function write_array(array){
+	for(let i = 0; i < 6; i++){
+	document.write(array[i] + " ");
+	}
+	document.write("<br>");
+}
+function payout(luckyball, total_matches){
+	if(total_matches == 5 && luckyball){
+		document.write("five matches + lucky ball payout is $" + 7000 + " a week ffor life");
+	}else if(total_matches == 5){
+		document.write("five matches is $" + 25000 + " a year for life");
+	}else if(total_matches == 4 && luckyball){
+		document.write("fout matches and lucky ball is $" + 5000);
+	}else if(total_matches == 4){
+		document.write("four matches is $" + 200);
+	}else if(total_matches == 3 && luckyball){
+		document.write("three matches and lucky ball is $" + 150);
+	}else if(total_matches == 3){
+		document.write("three matches is $" + 20);
+	}else if(total_matches == 2 && luckyball){
+		document.write("two matches and lucky ball is $" + 25);
+	}else if(total_matches == 2){
+		document.write("two matches is $" + 3);
+	}else if(total_matches == 1 && luckyball){
+		document.write("one match and luckyball is $" + 6);
+	}else if(total_matches == 0 && luckyball){
+		document.write("luckyball is $" + 4);
+	}else{
+		document.write("no payout");
+	}
+}
+
+var myArray = lotto();
+myArray.sort((a, b) => a - b);
+
+var userArray = userLotto();
+userArray.sort((a, b) => a - b);
+
+var match_count = 0;
+for(let i = 0; i < 5; i++){
+	if(myArray[i] == userArray[i]){
+		match_count++;
+	}
+}
+document.write("The winning numbers are: <br>");
+write_array(myArray);
+document.write("Your numbers are: <br>");
+write_array(userArray);
+var matched_lucky = false;
+document.write("There are " + match_count + " total first five matches <br>");
+if(myArray[5] == userArray[5]){
+		document.write("You matched with the lucky ball!!<br>");
+		matched_lucky = true;
+}
+payout(matched_lucky, match_count);
+</script>
+
+</body>
+</html> 
